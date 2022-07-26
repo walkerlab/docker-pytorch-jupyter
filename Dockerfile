@@ -29,7 +29,7 @@ RUN pip3 --no-cache-dir install \
 EXPOSE 8888
 
 # Add Jupyter Notebook config
-ADD ./jupyter_notebook_config.py /root/.jupyter/
+COPY ./jupyter_server_config.py /root/.jupyter/
 
 # By default start running jupyter notebook
 ENTRYPOINT ["jupyter", "lab", "--allow-root"]
