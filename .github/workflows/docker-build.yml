@@ -49,5 +49,5 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.ON_MAIN_FORK_AND_BRANCH == 'true' }}
-          tags: walkerlab/pytorch-jupyter:${{ matrix.BASE_IMG_NAME }}
+          tags: walkerlab/pytorch-jupyter:${{ matrix.BASE_IMG_TAG }}
           labels: ${{ steps.meta.outputs.labels }}
