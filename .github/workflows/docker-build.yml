@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Set ON_MAIN_FORK_AND_BRANCH
-        run: echo "ON_MAIN_FORK_AND_BRANCH=$([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-docker" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
+        run: echo "ON_MAIN_FORK_AND_BRANCH=$([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-jupyter" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
 
       - name: Checkout
         uses: actions/checkout@v2
