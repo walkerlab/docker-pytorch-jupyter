@@ -33,4 +33,4 @@ EXPOSE 8888
 COPY ./jupyter_server_config.py /root/.jupyter/
 
 # By default start running jupyter notebook
-CMD jupyter lab --allow-root
+CMD ["jupyter", "lab", "--allow-root"]
