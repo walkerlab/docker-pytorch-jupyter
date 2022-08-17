@@ -23,6 +23,7 @@ RUN pip3 --no-cache-dir install \
     h5py \
     gitpython \
     Pillow \
+    networkx==2.6.3 \
     datajoint
 
 # Export port for Jupyter Notebook
