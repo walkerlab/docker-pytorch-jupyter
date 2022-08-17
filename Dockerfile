@@ -23,6 +23,7 @@ RUN pip3 --no-cache-dir install \
     h5py \
     gitpython \
     Pillow \
+    networkx==2.6.3 \
     datajoint
 
 # Export port for Jupyter Notebook
@@ -32,4 +33,4 @@ EXPOSE 8888
 COPY ./jupyter_server_config.py /root/.jupyter/
 
 # By default start running jupyter notebook
-ENTRYPOINT ["jupyter", "lab", "--allow-root"]
+CMD ["jupyter", "lab", "--allow-root"]
