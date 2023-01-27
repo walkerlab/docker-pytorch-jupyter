@@ -26,6 +26,9 @@ RUN pip3 --no-cache-dir install \
     networkx==2.6.3 \
     datajoint
 
+# Install Node JS
+RUN curl -fsSL https://deb.nodesource.com/setup_19.x | bash - && apt-get install -y nodejs
+
 # Export port for Jupyter Notebook
 EXPOSE 8888
 
