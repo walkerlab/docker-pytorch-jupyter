@@ -25,8 +25,8 @@ jobs:
       - name: Set REPO_NAME_LC
         run: echo "REPO_NAME_LC=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
-      - name: Set ON_MAIN_FORK_AND_BRANCH
-        run: echo "ON_MAIN_FORK_AND_BRANCH=$([ "$GITHUB_REPOSITORY" == "walkerlab/pytorch-jupyter" ] && [ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
+      - name: Set ON_MAIN_BRANCH
+        run: echo "ON_MAIN_BRANCH=$([ "$GITHUB_REF_NAME" == "main" ] &&  echo true || echo false)" >> $GITHUB_ENV  # If it is from the main fork and is main branch
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -57,6 +57,6 @@ jobs:
             BASE_IMG_NAME=walkerlab/pytorch:${{ matrix.BASE_IMG_TAG }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
-          push: ${{ env.ON_MAIN_FORK_AND_BRANCH == 'true' }}
+          push: ${{ env.ON_MAIN_BRANCH == 'true' }}
           tags: ghcr.io/${{ env.REPO_NAME_LC }}:cuda-${{ matrix.CUDA_VER }}-pytorch-${{ matrix.TORCH_VER }}-torchvision-${{ matrix.TORCHVISION_VER }}-torchaudio-${{ matrix.TORCHAUDIO_VER }}-ubuntu-${{ matrix.UBUNTU_VER }}
           labels: ${{ steps.meta.outputs.labels }}
