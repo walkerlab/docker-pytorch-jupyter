@@ -8,10 +8,9 @@ jobs:
     strategy:
       matrix:
         BASE_IMG_TAG: [
-          cuda-11.3.1-pytorch-1.12.0-torchvision-0.12.0-torchaudio-0.11.0-ubuntu-20.04,
           cuda-11.3.1-pytorch-1.11.0-torchvision-0.12.0-torchaudio-0.11.0-ubuntu-20.04,
-          cuda-11.6.1-pytorch-1.12.0-torchvision-0.12.0-torchaudio-0.11.0-ubuntu-20.04,
-          cuda-11.6.1-pytorch-1.11.0-torchvision-0.12.0-torchaudio-0.11.0-ubuntu-20.04,
+          cuda-11.3.1-pytorch-1.12.0-torchvision-0.13.0-torchaudio-0.11.0-ubuntu-20.04,
+          cuda-11.6.1-pytorch-1.12.0-torchvision-0.13.0-torchaudio-0.11.0-ubuntu-20.04,
           cuda-11.7.1-pytorch-1.13.0-torchvision-0.13.0-torchaudio-0.13.0-ubuntu-20.04,
           cuda-11.8.0-pytorch-1.13.0-torchvision-0.14.0-torchaudio-0.13.0-ubuntu-22.04,
           ]
@@ -54,9 +53,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: .
           build-args: |
-            BASE_IMG_NAME=walkerlab/pytorch:${{ matrix.BASE_IMG_TAG }}
+            BASE_IMG_NAME=ghcr.io/walkerlab/pytorch-docker:${{ matrix.BASE_IMG_TAG }}
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ env.ON_MAIN_BRANCH == 'true' }}
           tags: ghcr.io/${{ env.REPO_NAME_LC }}:${{ matrix.BASE_IMG_TAG }}
-          labels: ${{ steps.meta.outputs.labels }}
